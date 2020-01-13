@@ -48,5 +48,3 @@ call vundle#end()
 filetype plugin indent on    
 
 
-ab bits #include<bits/stdc++.h>
-

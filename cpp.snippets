@@ -1,0 +1,71 @@
+snippet mtest
+int TT;
+cin >> TT;
+while (TT--) {
+	solve();
+}
+endsnippet
+
+
+snippet solve
+void solve() {
+	$1
+}
+endsnippet
+
+
+
+snippet fastio
+ios::sync_with_stdio(0);
+cin.tie(0);
+endsnippet
+
+
+snippet tpl
+#include <bits/stdc++.h>
+using namespace std;
+
+
+int main() { 
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+	$1
+    return 0;
+}
+endsnippet
+
+
+snippet debug
+struct error {
+	template<class T1, class T2> error& operator << (pair<T1, T2> x) {
+		return *this << "(" << x.first << ", " << x.second << ")";
+	}
+	template<class T> typename enable_if<is_scalar<T>::value || is_same<T, string>::value, error&>::type operator << (T x) {
+		cerr << boolalpha << x;
+		return *this;
+	}
+	template<class T> typename enable_if<!is_scalar<T>::value && !is_same<T, string>::value, error&>::type operator << (T x) {
+		*this << "{";
+		for (auto i = x.begin(); i != x.end(); ++i)
+			*this << ", " + 2 * (i == x.begin()) << *i;
+		return *this << "}";
+	}
+};
+
+template<class T> void dout(string name, T x) {
+	error() << name << " : " << x << "\n";
+}
+
+template<class T1, class... T2> void dout(string names, T1 x, T2... y) {
+	error() << names.substr(0, names.find(',')) << " : " << x << " | ";
+	dout(names.substr(names.find(',') + 2), y...);
+}
+
+#ifdef DK
+	#define debug(...) dout(#__VA_ARGS__, __VA_ARGS__)
+#else
+	#define debug(...) 42
+#endif
+endsnippet
+
+
